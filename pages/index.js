@@ -7,6 +7,7 @@ import Image from 'next/image';
 import landingImage from '../public/images/1.png';
 import image2 from '../public/images/2.png';
 import image3 from '../public/images/3.png';
+import blockchainImage from '../public/images/5.png';
 
 const Home = () => {
   const router = useRouter();
@@ -82,7 +83,15 @@ const Home = () => {
           </div>
         </div>
       </footer>
-      <div id="moreContent" style={moreContentStyle}></div>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '2rem' }}>
+        <div style={{ position: 'relative', marginRight: '1rem' }}>
+          <Image src={blockchainImage} alt="Blockchain Image" width={200} height={200} />
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <h2 style={{ fontSize: '4rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)', zIndex: 1 }}>What is blockchain?</h2>
+          </div>
+        </div>
+        <div id="moreContent" style={moreContentStyle}></div>
+      </div>
     </div>
   );
 };
