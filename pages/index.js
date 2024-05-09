@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { useRouter } from 'next/router';
-import { FaIndustry, FaUser, FaBitcoin, FaEthereum, FaCubes } from 'react-icons/fa';
+import { FaBitcoin, FaEthereum, FaCubes } from 'react-icons/fa';
 
 const Home = () => {
   const router = useRouter();
@@ -42,10 +42,10 @@ const Home = () => {
           <p style={textStyle}>Revolutionizing anti-counterfeit with blockchain technology.</p>
           <div style={buttonContainerStyle}>
             <button onClick={handleAddProductClick} style={buttonStyle}>
-              <FaIndustry style={buttonIconStyle} /> Manufacturer
+              Manufacturer
             </button>
             <button onClick={handleQRScannerClick} style={buttonStyle}>
-              <FaUser style={buttonIconStyle} /> Consumer
+              Consumer
             </button>
           </div>
         </div>
@@ -66,37 +66,11 @@ const Home = () => {
       </div>
       <footer style={footerStyle}>
         <div style={footerContentStyle}>
-          <div>
-            <h3 style={footerHeadingStyle}>Explore</h3>
-            <ul style={footerListStyle}>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
-              <li>
-                <a href="#">Careers</a>
-              </li>
-            </ul>
+          <div style={footerIconContainerStyle}>
+            <FaBitcoin style={footerIconStyle} />
+            <FaEthereum style={footerIconStyle} />
+            <FaCubes style={footerIconStyle} />
           </div>
-          <div>
-            <h3 style={footerHeadingStyle}>Follow Us</h3>
-            <ul style={footerListStyle}>
-              <li>
-                <a href="#">Instagram</a>
-              </li>
-              <li>
-                <a href="#">Twitter</a>
-              </li>
-              <li>
-                <a href="#">Facebook</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div style={footerLegalStyle}>
-          <p>&copy; 2024 Authentithief. All rights reserved.</p>
         </div>
       </footer>
       <div id="moreContent" style={moreContentStyle}></div>
@@ -182,13 +156,9 @@ const buttonStyle = {
   boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
 };
 
-const buttonIconStyle = {
-  marginRight: '0.5rem',
-};
-
 const learnMoreButtonStyle = {
-  padding: '0.8rem 2.5rem', // Reduced padding
-  fontSize: '1.1rem', // Reduced font size
+  padding: '0.8rem 2.5rem',
+  fontSize: '1.1rem',
   fontWeight: 'bold',
   backgroundImage: 'linear-gradient(to right, #8e2de2, #4a00e0)',
   color: '#fff',
@@ -227,20 +197,12 @@ const footerContentStyle = {
   margin: '0 auto',
 };
 
-const footerHeadingStyle = {
-  fontSize: '1.5rem',
-  textShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
+const footerIconContainerStyle = {
+  fontSize: '4rem',
 };
 
-const footerListStyle = { 
-  listStyle: 'none',
-  padding: 0,
-};
-
-const footerLegalStyle = {
-  marginTop: '1rem',
-  textAlign: 'center',
-  textShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
+const footerIconStyle = {
+  marginRight: '1rem',
 };
 
 const moreContentStyle = {

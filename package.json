@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "bootstrap": "^5.3.3",
+    "cryptocurrency-icons": "^0.18.1",
     "framer-motion": "^11.1.9",
     "instascan": "^1.0.0",
     "jsqr": "^1.4.0",
@@ -24,6 +25,7 @@
     "react-native-modern-qrscanner": "^1.0.8",
     "react-qr-code": "^2.0.12",
     "react-qr-scanner": "^1.0.0-alpha.11",
+    "react-tsparticles": "^2.12.2",
     "styled-components": "^6.1.10"
   }
 }
