@@ -192,7 +192,7 @@ const footerHeadingStyle = {
   textShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
 };
 
-const footerListStyle = {
+const footerListStyle = { 
   listStyle: 'none',
   padding: 0,
 };
