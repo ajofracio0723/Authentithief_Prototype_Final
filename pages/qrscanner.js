@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import jsQR from 'jsqr';
+import QRCode from 'react-qr-code';
 import Header from '../components/Header';
-import { FaCube, FaEthereum, FaCamera } from 'react-icons/fa';
+import { FaBitcoin, FaEthereum, FaCube, FaCamera } from 'react-icons/fa';
+import jsQR from 'jsqr';
 
 const QRScanner = () => {
   const [scannedResult, setScannedResult] = useState('');
@@ -95,14 +96,9 @@ const QRScanner = () => {
       <div style={contentContainerStyle}>
         <div style={leftContentStyle}>
           <div style={logoContainerStyle}>
-            <div style={cryptoLogoStyle}>
-              <FaCube style={cryptoIconStyle} />
-              <p>Blockchain</p>
-            </div>
-            <div style={cryptoLogoStyle}>
-              <FaEthereum style={cryptoIconStyle} />
-              <p>Ethereum</p>
-            </div>
+            <FaBitcoin style={cryptoIconStyle} />
+            <FaEthereum style={cryptoIconStyle} />
+            <FaCube style={cryptoIconStyle} />
           </div>
           <h1 style={titleStyle}>
             <FaCamera style={{ marginRight: '0.5rem' }} />
@@ -159,12 +155,6 @@ const logoContainerStyle = {
   display: 'flex',
   justifyContent: 'center',
   marginBottom: '2rem',
-};
-
-const cryptoLogoStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  marginRight: '2rem',
 };
 
 const cryptoIconStyle = {
