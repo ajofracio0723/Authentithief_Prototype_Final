@@ -88,10 +88,15 @@ const Home = () => {
 };
 
 const containerStyle = {
-  position: 'relative',
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  zIndex: 1,
+  overflow: 'auto',
   fontFamily: 'Roboto, sans-serif',
-  background: 'linear-gradient(to bottom, #201e3c, #0c0d1d)',
-  minHeight: '100vh',
+  background: 'radial-gradient(circle, #1a0938, #000000)',
   color: '#fff',
 };
 
