@@ -23,6 +23,11 @@ const Home = () => {
     router.push('/qrscanner');
   };
 
+  const handleLearnMoreClick = () => {
+    const moreContentSection = document.getElementById('moreContent');
+    moreContentSection.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div style={containerStyle}>
       <Header />
@@ -49,6 +54,14 @@ const Home = () => {
             <source src="/videos/2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <div style={learnMoreContainerStyle}>
+            <button onClick={handleLearnMoreClick} style={learnMoreButtonStyle}>
+              Learn More
+            </button>
+            <p style={antiCounterfeitTextStyle}>
+              Learn more about our revolutionary anti-counterfeit system powered by blockchain technology.
+            </p>
+          </div>
         </div>
       </div>
       <footer style={footerStyle}>
@@ -86,6 +99,7 @@ const Home = () => {
           <p>&copy; 2024 Authentithief. All rights reserved.</p>
         </div>
       </footer>
+      <div id="moreContent" style={moreContentStyle}></div>
     </div>
   );
 };
@@ -121,7 +135,7 @@ const backgroundVideoStyle = {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  borderRadius: '20px', // Increased border radius
+  borderRadius: '20px',
 };
 
 const iconContainerStyle = {
@@ -155,13 +169,13 @@ const buttonStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '1rem 2rem',
+  padding: '1rem 3rem',
   fontSize: '1.2rem',
   fontWeight: 'bold',
   backgroundColor: 'transparent',
   color: '#fff',
   border: '2px solid #fff',
-  borderRadius: '5px',
+  borderRadius: '50px',
   cursor: 'pointer',
   marginRight: '1rem',
   transition: 'background-color 0.3s ease',
@@ -170,6 +184,32 @@ const buttonStyle = {
 
 const buttonIconStyle = {
   marginRight: '0.5rem',
+};
+
+const learnMoreButtonStyle = {
+  padding: '0.8rem 2.5rem', // Reduced padding
+  fontSize: '1.1rem', // Reduced font size
+  fontWeight: 'bold',
+  backgroundImage: 'linear-gradient(to right, #8e2de2, #4a00e0)',
+  color: '#fff',
+  border: '2px solid #6f42c1',
+  borderRadius: '50px',
+  cursor: 'pointer',
+  marginTop: '1rem',
+  transition: 'background-color 0.3s ease',
+  boxShadow: '0 0 10px rgba(116, 79, 160, 0.5)',
+};
+
+const learnMoreContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+};
+
+const antiCounterfeitTextStyle = {
+  fontSize: '1rem',
+  marginTop: '1rem',
+  textAlign: 'center',
 };
 
 const footerStyle = {
@@ -201,6 +241,10 @@ const footerLegalStyle = {
   marginTop: '1rem',
   textAlign: 'center',
   textShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
+};
+
+const moreContentStyle = {
+  paddingTop: '100vh',
 };
 
 export default Home;
