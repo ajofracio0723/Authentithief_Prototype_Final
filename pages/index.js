@@ -83,14 +83,17 @@ const Home = () => {
           </div>
         </div>
       </footer>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '2rem' }}>
-        <div style={{ position: 'relative', marginRight: '1rem' }}>
-          <Image src={blockchainImage} alt="Blockchain Image" width={200} height={200} />
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <h2 style={{ fontSize: '4rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)', zIndex: 1 }}>What is blockchain?</h2>
+      <div id="moreContent" style={moreContentStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', marginTop: '2rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ textAlign: 'left' }}>
+              <h2 style={{ fontSize: '6rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>What is blockchain?</h2>
+            </div>
+            <div style={{ position: 'relative', marginLeft: '1rem' }}>
+              <Image src={blockchainImage} alt="Blockchain Image" width={400} height={400} />
+            </div>
           </div>
         </div>
-        <div id="moreContent" style={moreContentStyle}></div>
       </div>
     </div>
   );
@@ -233,7 +236,7 @@ const footerIconStyle = {
 };
 
 const moreContentStyle = {
-  paddingTop: '100vh',
+  paddingTop: 0,
 };
 
 export default Home;
