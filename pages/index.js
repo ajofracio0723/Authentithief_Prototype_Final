@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { useRouter } from 'next/router';
 import { FaBitcoin, FaEthereum, FaCubes } from 'react-icons/fa';
+import { SiSolidity } from 'react-icons/si';
+import Image from 'next/image';
+import landingImage from '../public/images/1.png';
+import image2 from '../public/images/2.png';
+import image3 from '../public/images/3.png';
 
 const Home = () => {
   const router = useRouter();
@@ -70,6 +75,10 @@ const Home = () => {
             <FaBitcoin style={footerIconStyle} />
             <FaEthereum style={footerIconStyle} />
             <FaCubes style={footerIconStyle} />
+            <SiSolidity style={footerIconStyle} />
+            <Image src={landingImage} alt="Landing Image" style={footerIconStyle} />
+            <Image src={image2} alt="Image 2" style={footerIconStyle} />
+            <Image src={image3} alt="Image 3" style={footerIconStyle} />
           </div>
         </div>
       </footer>
@@ -199,10 +208,14 @@ const footerContentStyle = {
 
 const footerIconContainerStyle = {
   fontSize: '4rem',
+  display: 'flex',
+  alignItems: 'center',
 };
 
 const footerIconStyle = {
   marginRight: '1rem',
+  width: '4rem',
+  height: '4rem',
 };
 
 const moreContentStyle = {
