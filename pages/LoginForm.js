@@ -7,9 +7,11 @@ const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isFormFilled, setIsFormFilled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSignIn = () => {
     if (username && password) {
+      setIsLoggedIn(true);
       router.push('/Home2'); // Redirect to the home page if the form is filled
     } else {
       alert('Please fill in both username and password.');
@@ -63,7 +65,7 @@ const LoginForm = () => {
         <button onClick={handleSignIn} style={{ ...buttonStyle, ...(isFormFilled ? {} : { opacity: 0.5, pointerEvents: 'none' }) }}>
           Sign In
         </button> 
-        <p style={welcomeBackStyle}>Welcome Back!</p>
+        {isLoggedIn && <p style={successMessageStyle}>Login successful!</p>}
         <p style={descriptionStyle}>
           Manage your account securely and access exclusive features.
         </p>
@@ -146,11 +148,11 @@ const buttonStyle = {
   boxShadow: '0 0 10px rgba(116, 79, 160, 0.5)',
 };
 
-const welcomeBackStyle = {
-  fontSize: '2rem',
+const successMessageStyle = {
+  fontSize: '1.2rem',
   fontWeight: 'bold',
-  marginTop: '2rem',
-  textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+  marginTop: '1rem',
+  color: 'green',
 };
 
 const descriptionStyle = {
