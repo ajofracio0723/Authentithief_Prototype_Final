@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
 import { FaBitcoin, FaEthereum, FaCubes } from 'react-icons/fa';
-import { useRouter } from 'next/router'; 
+import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
+import { RingLoader } from 'react-spinners';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const LoginForm = () => {
-  const router = useRouter(); 
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading indicator
 
   const handleSignIn = () => {
     if (username && password) {
-      setIsLoggedIn(true);
-      router.push('/Home2'); // Redirect to the home page if the form is filled
+      setIsLoading(true); // Set loading state to true when login process starts
+      // Simulate login process with setTimeout, replace with actual login process
+      setTimeout(() => {
+        setIsLoggedIn(true);
+        setTimeout(() => {
+          router.push('/Home2'); // Redirect to the home page with a delay
+        }, 1000); // Delay for 1 second before redirecting
+      }, 2000); // Simulating 2 seconds of login process
     } else {
       alert('Please fill in both username and password.');
     }
@@ -63,8 +78,12 @@ const LoginForm = () => {
           required
         />
         <button onClick={handleSignIn} style={{ ...buttonStyle, ...(isFormFilled ? {} : { opacity: 0.5, pointerEvents: 'none' }) }}>
-          Sign In
-        </button> 
+          {isLoading ? (
+            <RingLoader color={'#fff'} loading={true} css={override} size={32} />
+          ) : (
+            <span>Sign In</span>
+          )}
+        </button>
         {isLoggedIn && <p style={successMessageStyle}>Login successful!</p>}
         <p style={descriptionStyle}>
           Manage your account securely and access exclusive features.
