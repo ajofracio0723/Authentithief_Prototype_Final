@@ -3,19 +3,29 @@ import Header from '../components/Header';
 import { useRouter } from 'next/router';
 import { FaBitcoin, FaEthereum, FaCubes } from 'react-icons/fa';
 import { SiSolidity } from 'react-icons/si';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import landingImage from '../public/images/1.png';
 import image2 from '../public/images/2.png';
 import image3 from '../public/images/3.png';
 import blockchainImage from '../public/images/5.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home2 = () => {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false); // State for login success
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
+      // Simulating login success after 1 second
+      setLoginSuccess(true);
+      // Hide the success message after 2 seconds
+      setTimeout(() => {
+        setLoginSuccess(false);
+      }, 2000);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -37,6 +47,16 @@ const Home2 = () => {
   return (
     <div style={containerStyle}>
       <Header />
+      {/* User icon */}
+      <div style={userIconStyle}>
+        <FontAwesomeIcon icon={faUser} style={{ fontSize: '1.5rem', color: 'white' }} />
+      </div>
+      {/* Alert message for login success */}
+      {loginSuccess && (
+        <div style={alertStyle}>
+          Login successful! Welcome, user
+        </div>
+      )}
       <div style={contentContainerStyle}>
         <div style={leftContentStyle}>
           <div style={iconContainerStyle}>
@@ -84,34 +104,34 @@ const Home2 = () => {
         </div>
       </footer>
       <div id="moreContent" style={moreContentStyle}>
-  <div style={{ display: 'flex', alignItems: 'flex-start', marginTop: '2rem', justifyContent: 'center' }}>
-    <div style={{ textAlign: 'center', marginRight: '2rem' }}>
-      <div style={{ position: 'relative' }}> {/* Added position relative for image */}
-        <Image src={blockchainImage} alt="Blockchain Image" width={400} height={400} />
+        <div style={{ display: 'flex', alignItems: 'flex-start', marginTop: '2rem', justifyContent: 'center' }}>
+          <div style={{ textAlign: 'center', marginRight: '2rem' }}>
+            <div style={{ position: 'relative' }}> {/* Added position relative for image */}
+              <Image src={blockchainImage} alt="Blockchain Image" width={400} height={400} />
+            </div>
+          </div>
+          <div style={{ textAlign: 'left' }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>What is blockchain?</h2>
+            <p style={{ fontSize: '1.5rem', textAlign: 'left' }}>
+              Blockchain is a decentralized, distributed ledger technology that securely records transactions across multiple nodes. In Authentithief, blockchain serves as the foundation for creating a transparent and tamper-proof system for product identification and tracking.
+            </p>
+            <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '1rem' }}>Benefits of Authentithief:</h3>
+            <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Enhanced security and transparency in product identification</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Real-time tracking of products through the supply chain</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Decentralized and secure storage of product information</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Automation of supply chain events through smart contracts</li>
+            </ul>
+            <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '2rem' }}>Key Features:</h3>
+            <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>User-friendly interface for all stakeholders</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Blockchain-based authentication and authorization</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Role-based access control</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>QR code scanner for easy product verification</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div style={{ textAlign: 'left' }}>
-      <h2 style={{ fontSize: '3rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>What is blockchain?</h2>
-      <p style={{ fontSize: '1.5rem', textAlign: 'left' }}>
-        Blockchain is a decentralized, distributed ledger technology that securely records transactions across multiple nodes. In Authentithief, blockchain serves as the foundation for creating a transparent and tamper-proof system for product identification and tracking.
-      </p>
-      <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '1rem' }}>Benefits of Authentithief:</h3>
-      <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Enhanced security and transparency in product identification</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Real-time tracking of products through the supply chain</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Decentralized and secure storage of product information</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Automation of supply chain events through smart contracts</li>
-      </ul>
-      <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '2rem' }}>Key Features:</h3>
-      <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>User-friendly interface for all stakeholders</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Blockchain-based authentication and authorization</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Role-based access control</li>
-        <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>QR code scanner for easy product verification</li>
-      </ul>
-    </div>
-  </div>
-</div>
     </div>
   );
 };
@@ -140,12 +160,14 @@ const leftContentStyle = {
   flex: '1',
   marginRight: '2rem',
   textAlign: 'center',
+  paddingTop: '2rem',
 };
 
 const rightContentStyle = {
   position: 'relative',
   flex: '1',
   overflow: 'hidden',
+  paddingTop: '5rem',
 };
 
 const backgroundVideoStyle = {
@@ -254,6 +276,26 @@ const footerIconStyle = {
 
 const moreContentStyle = {
   paddingTop: 0,
+};
+
+const alertStyle = {
+  position: 'fixed',
+  top: '2rem',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  backgroundColor: 'rgba(116, 79, 160, 0.8)', 
+  color: '#fff', // Text color
+  padding: '1rem',
+  borderRadius: '8px',
+  zIndex: '9999',
+  boxShadow: '0 0 10px rgba(116, 79, 160, 0.5)',
+};
+
+const userIconStyle = {
+  position: 'absolute',
+  top: '1rem',
+  right: '1rem',
+  fontSize: '2rem', 
 };
 
 export default Home2;

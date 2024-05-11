@@ -147,6 +147,7 @@ const rightContentStyle = {
   position: 'relative',
   flex: '1',
   overflow: 'hidden',
+  paddingTop: '5rem',
 };
 
 const backgroundVideoStyle = {
