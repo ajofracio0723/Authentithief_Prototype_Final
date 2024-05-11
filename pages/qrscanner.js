@@ -32,8 +32,9 @@ const QRScanner = () => {
       const canvasContext = canvas.getContext('2d');
 
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        // Increase canvas size for better QR code detection
+        canvas.width = video.videoWidth * 2;
+        canvas.height = video.videoHeight * 2;
         canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
         const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(imageData.data, imageData.width, imageData.height);

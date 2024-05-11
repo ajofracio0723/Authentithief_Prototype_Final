@@ -1,3 +1,4 @@
+// Home.js
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { useRouter } from 'next/router';
@@ -22,11 +23,11 @@ const Home = () => {
   }, []);
 
   const handleAddProductClick = () => {
-    router.push('/add-product');
+    router.push('/LoginForm');
   };
 
   const handleQRScannerClick = () => {
-    router.push('/qrscanner');
+    router.push('/LoginForm');
   };
 
   const handleLearnMoreClick = () => {
@@ -84,14 +85,31 @@ const Home = () => {
         </div>
       </footer>
       <div id="moreContent" style={moreContentStyle}>
-        <div style={{ display: 'flex', alignItems: 'center', marginTop: '2rem', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ textAlign: 'left' }}>
-              <h2 style={{ fontSize: '6rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>What is blockchain?</h2>
-            </div>
-            <div style={{ position: 'relative', marginLeft: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', marginTop: '2rem', justifyContent: 'center' }}>
+          <div style={{ textAlign: 'center', marginRight: '2rem' }}>
+            <div style={{ position: 'relative' }}>
               <Image src={blockchainImage} alt="Blockchain Image" width={400} height={400} />
             </div>
+          </div>
+          <div style={{ textAlign: 'left' }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: 'bold', textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>What is blockchain?</h2>
+            <p style={{ fontSize: '1.5rem', textAlign: 'left' }}>
+              Blockchain is a decentralized, distributed ledger technology that securely records transactions across multiple nodes. In Authentithief, blockchain serves as the foundation for creating a transparent and tamper-proof system for product identification and tracking.
+            </p>
+            <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '1rem' }}>Benefits of Authentithief:</h3>
+            <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Enhanced security and transparency in product identification</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Real-time tracking of products through the supply chain</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Decentralized and secure storage of product information</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Automation of supply chain events through smart contracts</li>
+            </ul>
+            <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '2rem' }}>Key Features:</h3>
+            <ul style={{ listStyleType: 'none', padding: 0, marginLeft: '1rem' }}>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>User-friendly interface for all stakeholders</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Blockchain-based authentication and authorization</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Role-based access control</li>
+              <li style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>QR code scanner for easy product verification</li>
+            </ul>
           </div>
         </div>
       </div>

@@ -24,8 +24,12 @@
     "react-icons": "^5.2.1",
     "react-native-modern-qrscanner": "^1.0.8",
     "react-qr-code": "^2.0.12",
+    "react-qr-image": "^1.1.0",
     "react-qr-scanner": "^1.0.0-alpha.11",
     "react-tsparticles": "^2.12.2",
     "styled-components": "^6.1.10"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4"
   }
 }
