@@ -3,14 +3,16 @@ import QRCode from 'react-qr-code';
 import Header from '../components/Header';
 import { FaBitcoin, FaEthereum, FaCube, FaCamera } from 'react-icons/fa';
 import jsQR from 'jsqr';
+import { Alert } from 'react-bootstrap';
 
 const QRScanner = () => {
   const [scannedResult, setScannedResult] = useState('');
   const [scanSuccess, setScanSuccess] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const videoRef = useRef(null);
   const fileInputRef = useRef(null);
-  const successMessageTimeoutRef = useRef(null);
   const successSoundRef = useRef(null);
+  const alertTimeoutRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -40,10 +42,13 @@ const QRScanner = () => {
         const code = jsQR(imageData.data, imageData.width, imageData.height);
         if (code) {
           setScannedResult(code.data);
-          setScanSuccess(true);
-          clearTimeout(successMessageTimeoutRef.current);
-          successMessageTimeoutRef.current = setTimeout(() => setScanSuccess(false), 5000);
           successSoundRef.current.play();
+          setScanSuccess(true);
+          setShowSuccessAlert(true); // Show success alert
+          setTimeout(() => {
+            setShowSuccessAlert(false); // Hide success alert after 5 seconds
+            setScanSuccess(false);
+          }, 5000); // Hide success message after 5 seconds
         } else {
           setScanSuccess(false);
         }
@@ -77,10 +82,13 @@ const QRScanner = () => {
           const code = jsQR(imageData.data, imageData.width, imageData.height);
           if (code) {
             setScannedResult(code.data);
-            setScanSuccess(true);
-            clearTimeout(successMessageTimeoutRef.current);
-            successMessageTimeoutRef.current = setTimeout(() => setScanSuccess(false), 5000);
             successSoundRef.current.play();
+            setScanSuccess(true);
+            setShowSuccessAlert(true); // Show success alert
+            setTimeout(() => {
+              setShowSuccessAlert(false); // Hide success alert after 5 seconds
+              setScanSuccess(false);
+            }, 5000); // Hide success message after 5 seconds
           } else {
             setScanSuccess(false);
           }
@@ -88,43 +96,55 @@ const QRScanner = () => {
         img.src = event.target.result;
       };
       reader.readAsDataURL(file);
+      // Reset file input to allow selecting the same image again
+      e.target.value = null;
     }
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="container-fluid" style={{ ...containerStyle, paddingTop: '50px' }}>
       <Header />
-      <div style={contentContainerStyle}>
-        <div style={leftContentStyle}>
-          <div style={logoContainerStyle}>
-            <FaBitcoin style={cryptoIconStyle} />
-            <FaEthereum style={cryptoIconStyle} />
-            <FaCube style={cryptoIconStyle} />
-          </div>
-          <h1 style={titleStyle}>
-            <FaCamera style={{ marginRight: '0.5rem' }} />
-            QR Code Scanner
-          </h1>
-          <div style={scannerContainerStyle}>
-            <video ref={videoRef} style={videoStyle} />
-            {scanSuccess && (
-              <div style={{ ...successMessageStyle, backgroundColor: '#d4edda' }} className="alert alert-success" role="alert">
-                Scan Successful!
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card" style={cardStyle}>
+            <div className="card-body">
+              <div className="d-flex align-items-center justify-content-center mb-4">
+                {/* Bitcoin icon */}
+                <FaBitcoin style={cryptoIconStyle} />
+                {/* Ethereum icon */}
+                <FaEthereum style={cryptoIconStyle} />
+                {/* Blockchain icon */}
+                <FaCube style={cryptoIconStyle} />
               </div>
-            )}
+              <h2 className="text-center mb-4" style={authentithiefTitleStyle}>
+                AUTHENTITHIEF
+              </h2>
+              <h1 className="text-center mb-4" style={titleStyle}>
+                <FaCamera style={{ marginRight: '0.5rem' }} />
+                QR Code Scanner
+              </h1>
+              <div className="scanner-container" style={scannerContainerStyle}>
+                <video ref={videoRef} style={videoStyle} />
+                {showSuccessAlert && (
+                  <Alert variant="success" onClose={() => setShowSuccessAlert(false)} dismissible className="small-alert" style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', minWidth: '200px' }}>
+                    Product is authentic
+                  </Alert>
+                )}
+              </div>
+              <form style={scannedResultContainerStyle}>
+                <label htmlFor="scannedResult" style={scannedResultLabelStyle}>Scanned Result:</label>
+                <textarea id="scannedResult" name="scannedResult" value={scannedResult} style={scannedResultTextAreaStyle} readOnly />
+              </form>
+              <button onClick={() => fileInputRef.current.click()}>Upload QR Code Image</button>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileInputChange}
+              />
+            </div>
           </div>
-          <form style={scannedResultContainerStyle}>
-            <label htmlFor="scannedResult" style={scannedResultLabelStyle}>Scanned Result:</label>
-            <textarea id="scannedResult" name="scannedResult" value={scannedResult} style={scannedResultTextAreaStyle} readOnly />
-          </form>
-          <button onClick={() => fileInputRef.current.click()}>Upload QR Code Image</button>
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            onChange={handleFileInputChange}
-          />
         </div>
       </div>
       <audio ref={successSoundRef} src="/1.mp3" />
@@ -133,34 +153,25 @@ const QRScanner = () => {
 };
 
 const containerStyle = {
-  position: 'relative',
-  fontFamily: 'Roboto, sans-serif',
-  background: 'linear-gradient(to bottom, #201e3c, #0c0d1d)',
+  background: 'radial-gradient(circle, #330066, #000000)',
   minHeight: '100vh',
   color: '#fff',
 };
 
-const contentContainerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '2rem',
+const cardStyle = {
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  padding: '3rem',
+  borderRadius: '10px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)',
 };
 
-const leftContentStyle = {
-  flex: '1',
-  marginRight: '2rem',
-};
-
-const logoContainerStyle = {
-  display: 'flex',
-  justifyContent: 'center',
+const authentithiefTitleStyle = {
+  fontSize: '3.5rem',
+  fontWeight: 'bold',
   marginBottom: '2rem',
-};
-
-const cryptoIconStyle = {
-  fontSize: '3rem',
-  marginRight: '0.5rem',
+  textAlign: 'center',
+  textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+  color: '#f0f0f0', // Lighter color
 };
 
 const titleStyle = {
@@ -169,6 +180,7 @@ const titleStyle = {
   marginBottom: '2rem',
   textAlign: 'center',
   textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+  color: '#f0f0f0', // Lighter color
 };
 
 const scannerContainerStyle = {
@@ -188,17 +200,6 @@ const videoStyle = {
   borderRadius: '10px',
 };
 
-const successMessageStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  color: '#155724',
-  border: '1px solid #c3e6cb',
-  padding: '1rem',
-  borderRadius: '0.25rem',
-};
-
 const scannedResultContainerStyle = {
   marginTop: '1rem',
 };
@@ -207,6 +208,8 @@ const scannedResultLabelStyle = {
   fontSize: '1.5rem',
   fontWeight: 'bold',
   marginBottom: '0.5rem',
+  color: '#fff',
+  textShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
 };
 
 const scannedResultTextAreaStyle = {
@@ -216,6 +219,14 @@ const scannedResultTextAreaStyle = {
   borderRadius: '5px',
   border: '1px solid #ccc',
   fontSize: '1.2rem',
+  color: '#fff',
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+};
+
+const cryptoIconStyle = {
+  fontSize: '3rem',
+  marginRight: '0.5rem',
+  color: '#fff',
 };
 
 export default QRScanner;
