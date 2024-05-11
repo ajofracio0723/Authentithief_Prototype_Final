@@ -42,11 +42,11 @@ const LoginForm = () => {
           <FaEthereum style={iconStyle} />
           <FaCubes style={iconStyle} />
         </div>
-        <h2 style={titleStyle}>Authentithief</h2>
-        <p style={subtitleStyle}>Sign in to your account.</p>
+        <h2 style={titleStyle}>Welcome to Authentithief</h2>
+        <p style={subtitleStyle}>Secure your account with your credentials</p>
         <input
           type="text"
-          placeholder="Username"
+          placeholder="Enter your username"
           style={inputStyle}
           value={username}
           onChange={handleUsernameChange}
@@ -54,7 +54,7 @@ const LoginForm = () => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           style={inputStyle}
           value={password}
           onChange={handlePasswordChange}
@@ -65,7 +65,7 @@ const LoginForm = () => {
         </button> 
         <p style={welcomeBackStyle}>Welcome Back!</p>
         <p style={descriptionStyle}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend in nunc id gravida.
+          Manage your account securely and access exclusive features.
         </p>
         <div style={additionalContentStyle}>
           <p style={additionalContentTextStyle}>

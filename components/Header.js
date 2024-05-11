@@ -56,7 +56,7 @@ const Header = () => {
         <ul className="menu-nav" style={{ listStyleType: 'none', padding: 0 }}>
           <li className="menu-nav-item" style={{ marginBottom: '20px' }}>
             <a
-              href="/"
+              href="/Home2"
               className="menu-nav-link"
               style={{ color: '#fff', textDecoration: 'none', fontSize: '28px', fontWeight: 'bold' }}
             >
