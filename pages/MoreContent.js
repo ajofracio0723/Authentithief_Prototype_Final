@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import blockchainImage from '../public/images/5.png';
-import metaMaskImage from '../public/images/1.png'; // Importing the meta mask image
+import metaMaskImage from '../public/images/1.png';
+import ethereumImage from '../public/images/6.png'; // Importing the Ethereum image
 
 const MoreContent = () => {
   return (
@@ -58,6 +59,31 @@ const MoreContent = () => {
               <li>Explore decentralized applications (DApps) by navigating to their websites and connecting your MetaMask wallet.</li>
               <li>Approve transactions and interact with smart contracts using MetaMask's user interface.</li>
             </ol>
+          </div>
+        </div>
+
+        <div style={sectionStyle}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)' }}>
+              <Image src={ethereumImage} alt="Ethereum Image" width={400} height={400} />
+            </div>
+          </div>
+          <div style={{ textAlign: 'left', maxWidth: '800px' }}>
+            <h2 style={titleStyle}>What is Ethereum?</h2>
+            <p style={textStyle}>
+              Ethereum is a decentralized platform that enables developers to build and deploy smart contracts and decentralized applications (DApps). It extends the blockchain's capabilities beyond just a cryptocurrency to include programmable code that runs on the Ethereum Virtual Machine (EVM).
+            </p>
+            <h3 style={subtitleStyle}>Purpose of Ethereum:</h3>
+            <p style={textStyle}>
+              Ethereum aims to create a more decentralized internet by allowing developers to create and execute smart contracts. These self-executing contracts with the terms of the agreement directly written into code can automate complex transactions and processes, reducing the need for intermediaries.
+            </p>
+            <h3 style={subtitleStyle}>Key Features of Ethereum:</h3>
+            <ul style={listStyle}>
+              <li>Smart Contracts: Self-executing contracts that automate transactions.</li>
+              <li>Decentralized Applications (DApps): Applications that run on a decentralized network.</li>
+              <li>Ethereum Virtual Machine (EVM): A runtime environment for smart contracts.</li>
+              <li>Ether (ETH): The native cryptocurrency used to pay for transactions and computational services on the network.</li>
+            </ul>
           </div>
         </div>
       </div>
